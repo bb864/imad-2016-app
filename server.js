@@ -54,7 +54,7 @@ var articles = {
                 Thanks!
         </p>`
     },
-    artcileThree : {
+    articleThree : {
         title : 'Article Three | Bhaskar Bansal',
         heading : 'Article Three',
         date : 'Oct,12 Thur,2016',
