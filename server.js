@@ -5,31 +5,80 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
-    title : 'Article One | Bhaskar Bansal',
-    heading : 'Article One',
-    date : 'Oct,10 Tues,2016',
-    content : `
-    <p>
-        This is the content section for my first article. This arcticle is about the IMAD course which I am doing these days. 
-            I am learning about web-app development, server-client, networking and databases.
-            Hope I get to learn something useful from this course. 
-            Thanks!
-    </p>
-    <p>
-        This is the content section for my first article. This arcticle is about the IMAD course which I am doing these days. 
-            I am learning about web-app development, server-client, networking and databases.
-            Hope I get to learn something useful from this course. 
-            Thanks!
-    </p>
-    <p>
-        This is the content section for my first article. This arcticle is about the IMAD course which I am doing these days. 
-            I am learning about web-app development, server-client, networking and databases.
-            Hope I get to learn something useful from this course. 
-            Thanks!
-            </p>`
-};
-
+var articles = {
+    articleOne : {
+        title : 'Article One | Bhaskar Bansal',
+        heading : 'Article One',
+        date : 'Oct,10 Tues,2016',
+        content : `
+        <p>
+            This is the content section for my first article. This arcticle is about the IMAD course which I am doing these days. 
+                I am learning about web-app development, server-client, networking and databases.
+                Hope I get to learn something useful from this course. 
+                Thanks!
+        </p>
+        <p>
+            This is the content section for my first article. This arcticle is about the IMAD course which I am doing these days. 
+                I am learning about web-app development, server-client, networking and databases.
+                Hope I get to learn something useful from this course. 
+                Thanks!
+        </p>
+        <p>
+            This is the content section for my first article. This arcticle is about the IMAD course which I am doing these days. 
+                I am learning about web-app development, server-client, networking and databases.
+                Hope I get to learn something useful from this course. 
+                Thanks!
+        </p>`
+    },
+    articleTwo : {
+        title : 'Article Two | Bhaskar Bansal',
+        heading : 'Article Two',
+        date : 'Oct,11 Wed,2016',
+        content : `
+        <p>
+            This is the content section for my second article. This arcticle is about the IMAD course which I am doing these days. 
+                I am learning about web-app development, server-client, networking and databases.
+                Hope I get to learn something useful from this course. 
+                Thanks!
+        </p>
+        <p>
+            This is the content section for my second article. This arcticle is about the IMAD course which I am doing these days. 
+                I am learning about web-app development, server-client, networking and databases.
+                Hope I get to learn something useful from this course. 
+                Thanks!
+        </p>
+        <p>
+            This is the content section for my second article. This arcticle is about the IMAD course which I am doing these days. 
+                I am learning about web-app development, server-client, networking and databases.
+                Hope I get to learn something useful from this course. 
+                Thanks!
+        </p>`
+    },
+    artcileThree : {
+        title : 'Article Three | Bhaskar Bansal',
+        heading : 'Article Three',
+        date : 'Oct,12 Thur,2016',
+        content : `
+        <p>
+            This is the content section for my third article. This arcticle is about the IMAD course which I am doing these days. 
+                I am learning about web-app development, server-client, networking and databases.
+                Hope I get to learn something useful from this course. 
+                Thanks!
+        </p>
+        <p>
+            This is the content section for my third article. This arcticle is about the IMAD course which I am doing these days. 
+                I am learning about web-app development, server-client, networking and databases.
+                Hope I get to learn something useful from this course. 
+                Thanks!
+        </p>
+        <p>
+            This is the content section for my third article. This arcticle is about the IMAD course which I am doing these days. 
+                I am learning about web-app development, server-client, networking and databases.
+                Hope I get to learn something useful from this course. 
+                Thanks!
+        </p>`
+    }
+}
 function createHtml(data){
     var title = data.title;
     var date = data.date;
@@ -68,24 +117,15 @@ function createHtml(data){
     `;
 return htmlTemplate;
 }
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
-  res.send(createHtml(articleOne));
+app.get('/:articleName',function(req,res){
+    var articleName = req.params.articleName;
+    res.send(createHtml(articles[articleName]));
 });
-
-
-app.get('/article-two',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html')); 
-});
-
-
-app.get('/article-three',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
-
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
