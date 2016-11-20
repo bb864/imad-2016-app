@@ -1,5 +1,5 @@
 <?php
-	require_once("connection.php");
+	require_once("ui/connection.php");
 	if(isset($_POST['submit'])){
 		$name =  pg_escape_string($_POST['name']);
 		$email =  pg_escape_string($_POST['e-mail']);
