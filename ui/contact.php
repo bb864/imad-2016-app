@@ -37,7 +37,7 @@
 				<div class="container">
 					<div class="col-lg-8" style="margin-bottom:10px;">
 						<h2>CONTACT ME</h2>
-						<form role="form" action="ui/contact_script.php" method="POST">
+						<form role="form" action="contact_script.php" method="POST">
 							<div class="form-group">
 								<label>Name</label>
 								<input class="form-control" name="name" required="true">
