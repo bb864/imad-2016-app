@@ -1,3 +1,9 @@
+<?php 
+	session_start();
+	if (isset($_SESSION['email']))
+	header('location: ui/index.html');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -14,29 +20,7 @@
 	<body>
 		
 		<div class="container-fluid">
-			<!-- start of navbar -->
-			<div class="navbar navbar-default navbar-fixed-top">
-				<div class="container">
-					<div class="navbar-header">
-					  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>                        
-					  </button>
-					  <a class="navbar-brand" href="ui/index.html">Bhaskar Bansal</a>
-					</div>
-					<div class="collapse navbar-collapse" id="myNavbar">
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-							<li><a href="#myModal" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-							<li><a href="about.php"><span class="glyphicon glyphicon-tasks"></span> About Us</a></li>
-							<li><a href="contact.php"><span class="glyphicon glyphicon-phone"></span> Contact Us</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- end of navbar -->
-			<!-- start of main content -->
+		<?php include("ui/navbar-before-login.php");?>
 			<div class="row" style="margin-top:80px;">
 				<div class="container text-justify">
 					<div class="col-lg-10">
@@ -53,20 +37,20 @@
 				<div class="container">
 					<div class="col-lg-8" style="margin-bottom:10px;">
 						<h2>CONTACT ME</h2>
-						<form role="form">
+						<form role="form" action="ui/contact_script.php" method="POST">
 							<div class="form-group">
 								<label>Name</label>
-								<input class="form-control" id="text">
+								<input class="form-control" name="name" required="true">
 							</div>
 							<div class="form-group">
 								<label>Email:</label>
-								<input type="email" class="form-control" id="email">
+								<input type="email" class="form-control" name="email" required="true">
 							</div>
 							<div class="form-group">
 								<label>Message:</label>
-								<textarea class="form-control" rows="5" id="comment"></textarea>
+								<textarea class="form-control" rows="5" id="comment" name="message" required="true"></textarea>
 							</div>
-						  <button type="submit" class="btn btn-primary">Submit</button>
+						  <button type="submit" name="submit "class="btn btn-primary">Submit</button>
 						</form>
 					</div>
 					<div class="col-lg-4">
@@ -95,7 +79,7 @@
 					<div class="col-lg-4">
 						<div><h3>My Account</h3></div>
 						<div><a href="#myModal" role="button" data-toggle="modal">Login</a></div>
-						<div><a href="signup.php">Signup</a></div>
+						<div><a href="ui/signup.php">Signup</a></div>
 					</div>
 					<div class="col-lg-4">
 						<div><h3>Contact Me</h3></div>
@@ -104,31 +88,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- end of footer -->
-		<!-- Modal in the navbar which is hidden initially -->
-		<div class="modal fade" id="myModal">
-			<div class="modal-dialog" style="left:0px;">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title" style="color:#000;">LOGIN</h4>
-					</div>
-					<div class="modal-body">
-						<p>Don't have an account? <a href="" class="decor_anchor">Register</a></p>
-						<form role="form" action="" method="POST">
-							<div class="form-group">
-								<input class="form-control"  placeholder="Email" name="e-mail">
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Password" name="password">
-							</div>
-						    <button type="submit" name="submit" class="btn btn-primary">Login</button>
-						</form><br/>
-						<a href="" style="color:#0000ff">Forgot Password?</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End of Modal -->
+		<?php include("ui/modal.php");?>
 	</body>
 </html>
