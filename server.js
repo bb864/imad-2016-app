@@ -29,6 +29,26 @@ app.get('/ui/contact.php', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'contact.php'));
 });
 
+app.get('/ui/modal.php', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'modal.php'));
+});
+
+app.get('/ui/contact_script.php', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'contact_script.php'));
+});
+
+app.get('/ui/connection.php', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'connection.php'));
+});
+
+app.get('/ui/navbar-after-login.php', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'navbar-after-login.php'));
+});
+
+app.get('/ui/login_script.php', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'login_script.php'));
+});
+
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
