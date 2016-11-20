@@ -15,7 +15,7 @@
             echo "Error with query: " . $errormessage; 
             exit(); 
         } 
-        echo "Thank-you for your message. We will get back to you as soon as possible. Go back to website <a href='ui/index.html'>here</a>" 
+        echo "Thank-you for your message! We will get back to you as soon as possible. Go back to website <a href='ui/index.html'>here</a>" 
         pg_close(); 
 	}
 ?>
