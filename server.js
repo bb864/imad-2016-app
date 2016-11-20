@@ -33,7 +33,7 @@ app.get('/ui/modal.php', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'modal.php'));
 });
 
-app.get('/ui/contact_script.php', function (req, res) {
+app.post('/ui/contact_script.php', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'contact_script.php'));
 });
 
